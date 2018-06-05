@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="div" class="row">
+        
+    </div>
+    
+    
+    <div class="row " >
+      <div class="row">  <a href="createPost.html" class="btn green darken-3">Подать объявление</a></div>
+      <div class="row"><a class="btn green darken-3">Перейти в архив</a></div>
+     
+        
+        
+    </div>
+</body>
+<script type="text/javascript" src=" https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    
+    $(document).ready(function() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/sW',
+            success: function(data) {
+                console.log(data);
+                var div_n=document.createElement('div');
+                document.getElementById("div").appendChild(div_n);
+                div_n.className="row left";
+                div_n.innerHTML="<h5>Ваше имя: "+data[0]["name"]+"</h5>"+"<br>"+"<h5>Ваш телефон: "+data[0]["phone"]+"</h5>";
+            },
+            data: {
+                id: localStorage.user_id
+            }
+            
+        })
+    });
+
+</script>
+
+</html>
